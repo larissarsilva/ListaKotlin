@@ -2,7 +2,7 @@
 data class No(val head:Int, val tail:No?)
 
 val l1 = No(1,No(2,No(1,No(3,No(5,No(2,No(3,No(2,null))))))))
-
+val l2 = No(1,No(2,No(3,No(5,null))))
 //Calcular o número de elementos da lista
 
 fun tamanho(n:No?):Int{
@@ -45,7 +45,42 @@ fun descartar(x:Int, n:No?):No?=
            }
         }
 
-val l2 = No(1,No(2,No(3,No(4,null))))
+// retornar o maior valor da lista
+
+fun maior(lista:No?, n:Int = 0):Int{
+    if(lista==null)
+        return -1
+    else{
+        if(lista.head > n && lista.tail == null)
+            return lista.head
+        else if (lista.head > n && lista.tail != null)
+            return maior(lista.tail,lista.head)
+        else
+            return maior(lista.tail, n)
+
+    }
+}
+
+//inserir numero numa lista ordenada
+
+fun insord(x:Int,lista:No?):No?=
+    if(lista==null)
+        null
+    else{
+        if(x <= lista.head)
+            No(x,lista)
+        else{
+            No(lista.head,insord(x,lista.tail))
+        }
+    }
+
+
+val l3 = No(2,No(1,null))
+
+
+
+println("antes de adicionar "  + l3)
+println("adicionando 4 = " + insord(4,l3))
 
 
 
