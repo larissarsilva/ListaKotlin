@@ -33,6 +33,22 @@ fun substituir(m:Int,n:Int,t:No?):No?=
         }
     }
 
+// descartar os n's primeiros elementos de uma lista(n é argumento)
 
+fun descartar(x:Int, n:No?):No?=
+        if(n==null) null
+        else{
+           if(x==0)
+               No(n.head,n.tail)
+            else{
+               descartar(x-1,n.tail)
+           }
+        }
+
+val l2 = No(1,No(2,No(3,No(4,null))))
+
+
+
+//println(descartar(2,l2))
 //println(l1)
 //println("substituir 2 por 9" + substituir(2,9,l1))
